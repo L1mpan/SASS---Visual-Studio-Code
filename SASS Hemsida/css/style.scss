@@ -1,0 +1,147 @@
+// General CSS for the entire <body> tag
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS';
+    -ms-overflow-style: none;               // Tar bort både Vertikala och Horisontella scroll bars för IE och Edge 
+    scrollbar-width: none;                  // Tar bort både Vertikala och Horisontella scroll bars för FireFox
+}
+
+body::-webkit-scrollbar {
+    display: none;                          // Tar bort Vertikala och Horisontella scroll bars för Chrome, Safari och Opera webbläsare
+}
+
+
+
+// Mixins
+@mixin background ($bgc) {                  // mixin för bakrundsfärg
+    background-color: $bgc;
+}
+
+@mixin bgImage($name) {                     // mixin som tar namnet på bildfilen som parameter, ändrar bakgrunden till en bakgrundsbild
+    $url:"../img/#{$name}.png";             // variabeln $name blir tilldelad ett värde i html dokumentet, (jag lägger "../img/" för att den ska kunna navigera till mappen där bilderna ligger)
+    background: url($url);                  // därefter är variabeln $url fullt definerad och sätter då bakgrunden till rätt .png
+}
+
+@mixin flexGeneral  {                       // mixin som ger flexbox attributer till de div taggar man inkluderar den i
+    display: flex;
+    justify-content: center; 
+}
+
+@mixin divSize($height, $width) {           // mixin som tar $height och $width som parameter, sätter height och width på vad man än inkluderar den i
+    height: $height;
+    width: $width;
+}
+
+@mixin paddings($left, $top, $right, $bottom) {         // mixin som tar värde för alla sidor som parameter, tilldelar de värden på all padding till där man inkluderade den
+    padding-left: $left;
+    padding-top: $top;
+    padding-right: $right;
+    padding-bottom: $bottom;
+}
+
+@mixin margins($left, $top, $right, $bottom) {          // mixin som tar värde för alla sidor som parameter, tilldelar de värden på all margin till där man inkluderade den
+    margin-left: $left;
+    margin-top: $top;
+    margin-right: $right;
+    margin-bottom: $bottom;
+}
+
+@mixin textModifier($size, $color) {                    // mixin som tar font size som parameter, ändrar font size 
+    font-size: $size;
+    color: $color;
+}
+
+
+
+
+// CSS för html taggar
+nav {
+    @include flexGeneral;
+    @include bgImage(kunai-nav);            // sätter 'kunai-nav' som parameter så att den bilden blir satt som bakgrundsbild på nav taggen
+    @include divSize(12vh, 100vw);          // sätter 12vh som height och 100vw som width
+    
+    position: fixed;                        // sätter position: fixed; för att den ska vara floating och följa med när man scrollar ner på hemsidan
+    align-items: center;                    // sätter center här så att alla knappar hamnar i mitten vertikalt
+}
+
+button {
+    @include margins(2vw, 0vh, 2vw, 0vh);   // sätter värden på margin -left, -top, -right, -bottom
+    @include divSize(12vh, 15vw);           // sätter värden på width och height
+    @include background(transparent);       // sätter 'transparent' så att det inte är någon bakgrund
+    @include textModifier(15pt, #fff);                // sätter font-size värdet
+
+    border: 0;                              // sätter border till 0 så att det ska lite snyggare ut
+    color: #fff;                          // sätter färgen på texten till vit
+
+    &:hover {           
+        background-color: rgba(0, 198, 100, 0.1);       // ändrar bakgrundsfärgen på knapparna till en grön färg med alpha 0.1 så att den inte täcker nav bakgrundsbilden helt när man håller muspekaren över de
+        color: rgba(0, 225, 127, 0.9)              // ändrar textfärgen till en ljusgrön färg då man håller muspekaren över knappen
+    }
+}
+
+main {
+    @include flexGeneral;
+    @include divSize(auto, 100vw);          // sätter height till auto eftersom att det är div taggarna 'slide' som bestämmer hur mycket plats som kommer att behövas och width till 100vw
+    @include background(#223);
+
+    flex-direction: column;                 // sätter en flex-direction: column; på alla children taggar i main så att div taggarna 'slide' hamnar i en kolumn och har sedan då rader i sig för klasserna 'desc' och 'video'
+}
+
+footer {
+    @include flexGeneral;
+    @include bgImage(kunai-footer);         // sätter 'kunai-footer' som parameter likt det jag gjorde på nav taggen
+    @include divSize(12vh, 100vw);
+
+    align-items: center;                    // sätter align-items: center; så att texten hamnar i mitten vertikalt
+}
+
+a {
+    @include textModifier(16pt, #fff);
+    
+    text-decoration-line: none;             // gör så att alla länkar inte har någon underline
+}
+
+p {
+    @include textModifier(16pt, #fff);                // sätter font-size till 15pt för alla p-taggar
+}
+
+h2 {
+    @include paddings(0, 2vh, 0, 1vh);      // sätter värden på padding för alla h2-taggar
+}
+
+iframe {
+    @include divSize(30vh, 28vw);           // ändrar storleken på 
+}
+
+
+
+// CSS för klasser                          
+.slide {                                    // alla som har klassen 'slide' kommer då ha följande ändringar, delvis från mixins men också från align-items: center; samma sak gäller för klasserna nedan
+    @include flexGeneral;
+    @include divSize(76vh, 100vw);          
+    @include paddings(0, 12vh, 0, 0);
+    
+    align-items: center; 
+}
+
+.video {
+    @include flexGeneral;
+    @include divSize(fit-content, fit-content);
+}
+
+.desc {
+    @include divSize(fit-content, 64vw);
+    @include margins(2vw, 0, 2vw, 0);
+    @include textModifier(12pt, #fff);
+}
+
+// CSS för ID                               // alla taggar som har dessa ID:en kommer då ha följande ändringar
+#slide4 {
+    @include paddings(0, 0, 0, 12vh);
+}
+
+#footer-link {
+    @include paddings(1vw, 0, 0, 0);
+    @include textModifier(15pt, #fff);
+}

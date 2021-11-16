@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+                    <!-- Notera allt som jag skriver inom ( ) är hur jag tänkte och resonerade kring mitt val -->
+
+<body>
+    <nav>                                                           <!-- Nav bar med 5 stycken länkar till som tar en till en specific div längre ner på sidan snarare än en ny sida -->
+        <a href="#"><button>Apex Movement Handbook</button></a>     <!-- href="#" tar en till toppen av sidan -->
+        <a href="#slide1"><button>Wall Bounce</button></a>          <!-- href som tar en till en div med det specifika ID:et -->
+        <a href="#slide2"><button>Tap Strafe</button></a>
+        <a href="#slide3"><button>Grapple Techniques</button></a>
+        <a href="#slide4"><button>Super Glide</button></a>
+    </nav>
+    <main>                                                          <!-- main tag som har allt innehåll i sig fast samtidigt är den skild från nav och footer ( Detta måste jag ha eftersom att jag inte vill att nav eller footer ska få vissa ändringar från mixins t.ex. som divSize, flex-direction: column; osv. ) -->
+        <div class="slide" id="slide0">                             <!-- div med en allmän klass "slide" och id "slide0" för att det ska gå att länka till det ID:et i en href ( Jag lägger allt i dessa 'slide' divs för att jag ska kunna ge children taggarna inherits såsom flex-direction: row; osv. ) -->
+            <div>
+                <img src="img/apexlogo.png" alt="apexlogo">
+            </div>
+            <div class="desc">                                      <!-- div med klass "desc", rubriker, underrubriker och paragrafer -->
+                <h1>Introduction to Apex Legends</h1>
+
+                    <h2><u>What is Apex?</u></h2>
+                        <p>
+                            Apex Legends is a class based first person shooter in the Battle Royale genre developed by Respawn Entertainment. The game features many different "Legends" that have vastly different abilities which excel in specific situations.
+                            Some Legends have abilities that either give you more movement speed or provide methods for acquiring more speed. One such character is Pathfinder, who with his grappling hook can reach immense amounts of speed combined with the numerous amounts of movement techniques.
+                        </p>
+
+                    <h2><u>What is unique about Apex?</u></h2>
+                        <p>
+                            Apex offers primarily very free and smooth movement compared to other games in the Battle Royale genre. Since there is no speed limit players can reach high velocities by hitting certain slanted surfaces and such.
+                            Comparable games are the Quake games with their high speed movement and utilization of weapons to traverse the map, such as rocket jumping. 
+                            The uniqueness comes from the in depth movement techniques however, which require a lot of practice and skill to perform mid fight. 
+                        </p>
+            </div>
+        </div>
+        <div class="slide" id="slide1">                             <!-- div med en allmän klass "slide" och id "slide0" för att det ska gå att länka till det ID:et i en href -->
+            <div class="video">                                     <!-- div med klass "video" med en youtube video player embed -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OA4hkmX89ro?start=93" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="desc">                                      <!-- div med klass "desc", rubriker, underrubriker och paragrafer -->
+                <h1>Wall Bounce</h1>
+                    
+                    <h2><u>How it works: </u></h2>
+                        <p>
+                            Wall Bouncing works thanks to player states, which in this case lets the player be in the wall climb state for a very short period, this creates a Wall Bounce. 
+                        </p>
+                
+                    <h2><u>Why you should learn it: </u></h2>
+                        <p>
+                            It's fun, good for faster traversal of objects, walls or buildings. You can combine Wall Bouncing with Tap Strafing for example to create even more versatile fluent movement.
+                        </p>
+                
+                    <h2><u>How do I Wall Bounce?</u></h2>
+                        <p>
+                            To Wall Bounce you need to slide jump toward a wall, doesn't really matter how fast you are traveling, just make sure you are slide jumping into the wall. 
+                            Then when you're just about to hit said wall you want to time another jump input, which will send you flying in a reflected angle at which you entered the bounce in.
+                            The outward angle can of course be altered by movement like I mentioned before, but for a start you just want to practice the example I just presented. 
+                        </p>
+            </div>
+        </div>
+
+        <div class="slide" id="slide2">                             <!-- div med en allmän klass "slide" och id "slide0" för att det ska gå att länka till det ID:et i en href -->
+            <div class="video">                                     <!-- div med klass "video" med en youtube videoplayer embed -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OA4hkmX89ro?start=147" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="desc">                                      <!-- div med klass "desc", rubriker, underrubriker och paragrafer -->
+                <h1>Tap Strafe</h1>
+                    
+                    <h2><u>How it works: </u></h2>
+                        <p>
+                            It's related to how the PC version of the game uses something called 'Lurch' which is meant to make a movement input of 1 and 0 feel more natural. 
+                            So the way Tap Strafing works is by constantly inputting a new +forward momentum vector in the physics engine. 
+                            This will, if done quickly enough, result in a quick shift of the direction you currently have momentum in. 
+                        </p>
+                
+                    <h2><u>Why you should learn it: </u></h2>
+                        <p>
+                            It's very useful for legends like Path and Octane because you can redirect a lot of momentum in times where you would want to. 
+                            It's also useful for redirecting yourself into Wall Jump, as well as redirecting Wall Jumps. Basically it's useful for redirecting movement. 
+                        </p>
+                
+                    <h2><u>How do I Tap Strafe?</u></h2>
+                        <p>
+                            In order to make it work as well as making it a lot easier on yourself, you will want to bind W to your scrollwheel input. 
+                            This will give you the ability to input a lot of +forward inputs without completely torturing your wrist. 
+                            Get this going and practice it a bit on either Octane pad or with the momentum Path's grapple gives you.
+                        </p>
+            </div>
+        </div>
+
+        <div class="slide" id="slide3">                             <!-- div med en allmän klass "slide" och id "slide0" för att det ska gå att länka till det ID:et i en href -->
+            <div class="video">                                     <!-- div med klass "video" med en youtube videoplayer embed -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OA4hkmX89ro?start=314" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <div class="desc">                                      <!-- div med klass "desc", rubriker, underrubriker och paragrafer -->
+                <h1>Grapple Techniques</h1>
+                    
+                    <h2><u>How they work: </u></h2>
+                        <p>
+                            First off you should probably get acquainted with the grapple before tackling these other mechanics, but starting off I just explain some of the basics that you should know about. 
+                            First mechanic is <b>Super Grapple</b>, which you get by connecting the grapple when the hook is pulling back to you, rather than simply connecting on the way out. 
+                            Second one is <b>Catapulting</b>, which is done by grappling the ground in front of you and jumping as the grapple connects. This will result in you flying in a rotation around the center anchor point. 
+                            The further away you shoot the grapple, the more distance you will travel.
+                        </p>
+                
+                    <h2><u>Why you should learn these: </u></h2>
+                        <p>
+                            They are used a lot of the time when playing him, as they really excel his performance, while at the same time being really easy to learn and pull off.
+                        </p>
+                
+                    <h2><u>How do I do all of these?</u></h2>
+                        <p>
+                            <b>Super Grapple</b> is done by either aiming grapple really precisely at the edge of terrain or by grappling a little bit above some terrain while running toward it. 
+                            <b>Catapulting</b> is done by shooting the grapple in the ground in front of you, jumping as soon as it connects and then following the anchor point like you would normally when trying to drag out grapples.
+                        </p>
+            </div>
+        </div>
+
+        <div class="slide" id="slide4">                             <!-- div med en allmän klass "slide" och id "slide0" för att det ska gå att länka till det ID:et i en href -->
+            <div class="video">                                     <!-- div med klass "video" med en youtube videoplayer embed -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/OA4hkmX89ro?start=627" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <div class="desc">                                      <!-- div med klass "desc", rubriker, underrubriker och paragrafer -->
+                <h1>Super Glide</h1>
+
+                    <h2><u>How it works: </u></h2>
+                        <p>
+                            Super Gliding is a frame perfect movement technique, which will send you flying in whichever direction you currently have inputs for. 
+                            What makes this movement tech so dificult to pull off is how short of a window you have to get it done correctly. 
+                            It's dependant on the client side tick rate of the game, which corelates to FPS. 
+                            If your game is running at 144 FPS then you have a input window of 8ms.
+                        </p>
+                    <h2><u>Why you should learn it: </u></h2>
+                        <p>
+                            It's a crazy technique for outplaying people, and generally moving around in fights. It can also help with closing some huge gaps that you wouldn't normally be able to with other normal movement.
+                        </p>
+                    <h2><u>How do I Super Glide?</u></h2>
+                        <p>
+                            In order to Super Glide you need to have something to climb, it doesn't matter what height the object or terrain is, you just need the climb animation to play. 
+                            Now in order to make this easier you want to use Spacebar and C, since you're doing both inputs with the same finger for better consitency. 
+                        </p>
+            </div>
+        </div>
+    </main>
+    <footer>                                                        <!-- footer tag med en p tag och länk -->
+        <p>Copyright 2021 More about movement in Apex: </p>  <a href="https://www.youtube.com/c/Mokeysniper" id="footer-link">Mokeysniper YouTube Channel</a>
+    </footer>
+</body>
+</html>
